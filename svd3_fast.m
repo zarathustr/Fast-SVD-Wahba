@@ -2,12 +2,11 @@
 % author: liuzhuohua@bupt.edu.cn; jin_wu_uestc@hotmail.com
 
 
-function [u1, u2, u3, ...
-          d1, d2, d3, ...
-          v1, v2, v3] = svd3_fast(A, ...
-                                  A11, A12, A13, ...
-                                  A21, A22, A23, ...
-                                  A31, A32, A33)
+function [UU, VV] = svd3_fast(A)
+
+    A11 = A(1, 1);            A12 = A(1, 2);                A13 = A(1, 3);
+    A21 = A(2, 1);            A22 = A(2, 2);                A23 = A(2, 3);
+    A31 = A(3, 1);            A32 = A(3, 2);                A33 = A(3, 3);
                               
     B11 = A11 * A11 + A21 * A21 + A31 * A31;  
     B12 = A11 * A12 + A21 * A22 + A31 * A32; 
@@ -71,4 +70,7 @@ function [u1, u2, u3, ...
     u1 = A * v1 / d1; 
     u2 = A * v2 / d2; 
     u3 = A * v3 / d3;
+    
+    UU = [u1, u2, u3];
+    VV = [v1, v2, v3];
 end
